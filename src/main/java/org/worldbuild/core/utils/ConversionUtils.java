@@ -1,7 +1,7 @@
-package org.worldbuild.project.utils;
+package org.worldbuild.core.utils;
 
 import lombok.extern.log4j.Log4j2;
-import org.worldbuild.project.enums.DistanceUnit;
+import org.worldbuild.core.enums.DistanceUnit;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -181,7 +181,6 @@ public final class ConversionUtils {
 	}
 
 	public static Long convertMillisToMinutes(long durationInMillis) {
-
 		return durationInMillis / (1000 * 60);
 	}
 
@@ -190,12 +189,11 @@ public final class ConversionUtils {
 	}
 
 	public static double convertSecondsToHours(double durationInSeconds) {
-
 		return durationInSeconds / 3600;
 	}
 
 	public static long convertMillisToSeconds(long durationInMillis) {
-		return durationInMillis / 1 * 1000;
+		return durationInMillis * 1000;
 	}
 
 	public static long convertMillisToHours(long durationInMillis) {

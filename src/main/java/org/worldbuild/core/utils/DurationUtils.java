@@ -1,4 +1,4 @@
-package org.worldbuild.project.utils;
+package org.worldbuild.core.utils;
 
 import lombok.extern.log4j.Log4j2;
 

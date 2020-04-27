@@ -1,4 +1,4 @@
-package org.worldbuild.project.config;
+package org.worldbuild.core.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;

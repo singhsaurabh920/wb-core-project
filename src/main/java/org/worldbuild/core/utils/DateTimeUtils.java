@@ -1,20 +1,18 @@
-package org.worldbuild.project.utils;
+package org.worldbuild.core.utils;
 
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.lang3.StringUtils;
-import org.worldbuild.project.constant.DateTime;
-import org.worldbuild.project.modal.DateRange;
+import org.worldbuild.core.constant.DateTime;
+import org.worldbuild.core.modal.DateRange;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 @Log4j2
-public class DateTimeUtils {
+public class  DateTimeUtils {
 
 	public static DateRange getUTCDateRangeFromUserString(String userTimeZone, String dateRangeString) throws ParseException {
 		String drs[] = StringUtils.split(dateRangeString, "-");

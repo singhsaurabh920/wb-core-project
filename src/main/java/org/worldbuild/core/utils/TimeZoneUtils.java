@@ -1,4 +1,4 @@
-package org.worldbuild.project.utils;
+package org.worldbuild.core.utils;
 
 
 import lombok.extern.log4j.Log4j2;
@@ -9,6 +9,9 @@ import java.util.Date;
 
 @Log4j2
 public class TimeZoneUtils {
+
+	public static String UTC_TZ = "UTC";
+	public static String IST_TZ = "Asia/Kolkata";
 
 	/*################################################################################################################*/
 	//                                         CURRENT DATE IN UTC
@@ -69,7 +72,7 @@ public class TimeZoneUtils {
 	/*################################################################################################################*/
 	//                        START OF THE DAY BEFORE CURRENT DATE IN USER TIMEZONE
 	/*################################################################################################################*/
-	public static Date getSodDateBackInUserTimeZone(String userTimzezone, int days){
+	public static Date getSodDateBeforeInUserTimeZone(String userTimzezone, int days){
 		Instant nowUtc = Instant.now();
 		ZoneId utcTzId = ZoneId.of("UTC");
 		ZoneId userTzId = ZoneId.of(userTimzezone);
@@ -211,5 +214,43 @@ public class TimeZoneUtils {
 		LocalDateTime localDateTime=LocalDateTime.ofInstant(nowUtc, userTzId).toLocalDate().atTime(LocalTime.MAX).plusDays(days);
 		ZonedDateTime zonedDateTime=localDateTime.atZone(userTzId);
 		return Date.from(zonedDateTime.toInstant());
+	}
+
+
+	public static void test(){
+		log.info("################################################################");
+		Date date1=TimeZoneUtils.getCurrentDateInUTC();
+		log.info("getCurrentDateInUTC - "+date1);
+		Date date2=TimeZoneUtils.getCurrentDateInIST();
+		log.info("getCurrentDateInIST - "+date2);
+		Date date31=TimeZoneUtils.getCurrentDateInUserTimeZone(UTC_TZ);
+		log.info("UTC_TZ getCurrentDateInUserTimeZone - "+date31);
+		Date date32=TimeZoneUtils.getCurrentDateInUserTimeZone(IST_TZ);
+		log.info("IST_TZ getCurrentDateInUserTimeZone - "+date32);
+		Date date41=getSodDateInUserTimeZone(UTC_TZ);
+		log.info("UTC_TZ getSodDateInUserTimeZone - "+date41);
+		Date date42=getSodDateInUserTimeZone(IST_TZ);
+		log.info("IST_TZ getSodDateInUserTimeZone - "+date42);
+		Date date51=getEodDateInUserTimeZone(UTC_TZ);
+		log.info("UTC_TZ getEodDateInUserTimeZone - "+date51);
+		Date date52=getEodDateInUserTimeZone(IST_TZ);
+		log.info("IST_TZ getEodDateInUserTimeZone - "+date52);
+		Date date61=getSodDateBeforeInUserTimeZone(UTC_TZ,1);
+		log.info("UTC_TZ getSodDateBeforeInUserTimeZone - "+date61);
+		Date date62=getSodDateBeforeInUserTimeZone(IST_TZ,1);
+		log.info("IST_TZ getSodDateBeforeInUserTimeZone - "+date62);
+		Date date71=getEodDateBeforeInUserTimeZone(UTC_TZ,1);
+		log.info("UTC_TZ getEodDateBeforeInUserTimeZone - "+date71);
+		Date date72=getEodDateBeforeInUserTimeZone(IST_TZ,1);
+		log.info("IST_TZ getEodDateBeforeInUserTimeZone - "+date72);
+		Date date81=getUserDateSodDateInUTC(UTC_TZ);
+		log.info("UTC_TZ getUserDateSodDateInUTC - "+date81);
+		Date date82=getUserDateSodDateInUTC(IST_TZ);
+		log.info("IST_TZ getUserDateSodDateInUTC - "+date82);
+		Date date91=getUserDateEodDateInUTC(UTC_TZ);
+		log.info("UTC_TZ getUserDateEodDateInUTC - "+date91);
+		Date date92=getUserDateEodDateInUTC(IST_TZ);
+		log.info("IST_TZ getUserDateEodDateInUTC - "+date92);
+		log.info("################################################################");
 	}
 }

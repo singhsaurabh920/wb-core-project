@@ -1,7 +1,7 @@
-package org.worldbuild.project.utils;
+package org.worldbuild.core.utils;
 
 import lombok.extern.log4j.Log4j2;
-import org.worldbuild.project.enums.DistanceUnit;
+import org.worldbuild.core.enums.DistanceUnit;
 
 @Log4j2
 public class DistanceUtils {
