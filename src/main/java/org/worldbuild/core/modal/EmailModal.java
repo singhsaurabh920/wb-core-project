@@ -3,6 +3,8 @@ package org.worldbuild.core.modal;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.Map;
+
 @Data
 @Log4j2
 public class EmailModal {
@@ -13,4 +15,5 @@ public class EmailModal {
     private String content="";
     private String template="";
     private String attachment;
+    private Map<String,Object> modal;
 }
