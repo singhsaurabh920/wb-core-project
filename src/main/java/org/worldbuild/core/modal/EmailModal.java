@@ -10,6 +10,7 @@ public class EmailModal {
     private String from;
     private String to;
     private String subject;
-    private String template;
+    private String content="";
+    private String template="";
     private String attachment;
 }
