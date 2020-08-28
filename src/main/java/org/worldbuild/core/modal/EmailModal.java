@@ -13,7 +13,7 @@ public class EmailModal {
     private String to;
     private String subject;
     private String content="";
-    private String template="";
+    private String templateFilePath="";
     private String attachment;
     private Map<String,Object> modal;
 }
