@@ -5,12 +5,18 @@ import lombok.extern.log4j.Log4j2;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.VelocityException;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.http.client.BufferingClientHttpRequestFactory;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.client.InterceptingClientHttpRequestFactory;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
@@ -22,7 +28,7 @@ import java.util.concurrent.ScheduledExecutorService;
 
 @Log4j2
 @Configuration
-@EnableScheduling
+@ComponentScan(basePackages = "org.worldbuild.core")
 public class CoreConfiguration {
 
     @Bean(name = "objectMapper")
@@ -33,6 +39,14 @@ public class CoreConfiguration {
     @Bean("scheduledExecutorService")
     public ScheduledExecutorService scheduledExecutorService() {
         return Executors.newScheduledThreadPool(1);
+    }
+
+    @Bean("threadPoolTaskScheduler")
+    public ThreadPoolTaskScheduler threadPoolTaskExecutor() {
+        ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
+        threadPoolTaskScheduler.setPoolSize(1);
+        threadPoolTaskScheduler.initialize();
+        return threadPoolTaskScheduler;
     }
 
     @Bean("restTemplate")
