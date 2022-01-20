@@ -27,7 +27,7 @@
         <!-- avoid duplicated logs with additivity=false -->
         <Logger name="org.worldbuild" level="debug" additivity="false">
             <AppenderRef ref="ConsoleAppender"/>
-        </Logger>com.amazonaws.services.secretsmanager
+        </Logger>
         <!-- avoid duplicated logs with additivity=false -->
         <Logger name="com.amazonaws.services.secretsmanager" level="debug" additivity="false">
             <AppenderRef ref="ConsoleAppender"/>
