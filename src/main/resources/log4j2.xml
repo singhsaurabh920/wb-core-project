@@ -26,14 +26,16 @@
     <Loggers>
         <!-- avoid duplicated logs with additivity=false -->
         <Logger name="org.worldbuild" level="debug" additivity="false">
-            <!-- <AppenderRef ref="FileAppender" />-->
             <AppenderRef ref="ConsoleAppender"/>
-            <!-- <AppenderRef ref="RollingFileAppender"/>-->
+        </Logger>com.amazonaws.services.secretsmanager
+        <!-- avoid duplicated logs with additivity=false -->
+        <Logger name="com.amazonaws.services.secretsmanager" level="debug" additivity="false">
+            <AppenderRef ref="ConsoleAppender"/>
         </Logger>
         <Root level="info">
             <!-- <AppenderRef ref="FileAppender" />-->
             <AppenderRef ref="ConsoleAppender"/>
-            <AppenderRef ref="RollingFileAppender"/>
+            <!--<AppenderRef ref="RollingFileAppender"/>-->
         </Root>
     </Loggers>
 </Configuration>
